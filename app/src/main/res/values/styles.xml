@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="colorPrimaryDark">#CCC</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="titleTextColor">@color/customBlack</item>
+        <item name="subtitleTextColor">@color/customBlack</item>
+    </style>
+    <style name="mystyle">
+        <item name="android:textSize">20sp</item> <!-- menu item text size-->
+    </style>
+</resources>
