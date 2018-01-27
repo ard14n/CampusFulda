@@ -18,7 +18,6 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
-    private static final String DB_PATH = "/data/data/com.amedia.campusfulda/databases/";
     private static final int DB_VERSION = 2;
     private static final String DB_NAME = "so_systems.db";
     private static final String DB_TABLE = "campus";
@@ -79,14 +78,36 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
+    /*
+    *  Fügt einen Datensatz in die Datenbank ein
+    *
+    *
+    * @param name
+    * @param opened
+    * @param address
+    * @param info
+    * @param tags
+    * @param clat
+    * @param clong
+    * @param gebaeude
+    * @param wasser
+    * @param snacks
+    * @param drucker
+    * @param geld
+    * @param park
+    * @param bus
+    * @param fahrrad
+    * @param freizeit
+    *
+    * */
 
+    //TODO ArrayList mit CampusItems als Parameter
     public void insertData(String name, String opened, String address, String info, String tags, double clat, double clong, int gebaeude, int wasser, int snacks, int drucker, int geld, int park, int bus, int fahrrad, int freizeit ){
 
         myDataBase = getWritableDatabase();
-        // ContentValues class is used to store a set of values that the ContentResolver can process.
         ContentValues contentValues = new ContentValues();
 
-        // Get values from the POJO class and passing them to the ContentValues class
+
         contentValues.put(COL_NAME, name);
         contentValues.put(COL_ADDRESS, address);
         contentValues.put(COL_OPENED, opened);
@@ -118,7 +139,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
 
-
+    /*
+    *
+    * Holt alle Informationen für den Campusplan aus der Datenbank.
+    *
+    * @return campuslist vom Typ CampusItems
+    *
+    *
+    * */
     public List<CampusItems> getAllItems(){
         SQLiteDatabase db = getReadableDatabase();
 
