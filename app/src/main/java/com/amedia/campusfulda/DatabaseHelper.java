@@ -125,16 +125,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contentValues.put(COL_FREIZEIT, freizeit);
         contentValues.put(COL_TAGS, tags);
 
-        // Now we can insert the data in to relevant table
-        // I am going pass the id value, which is going to change because of our insert method, to a long variable to show in Toast
+
         long affectedColumnId = myDataBase.insert(DB_TABLE, null, contentValues);
 
-        // It is a good practice to close the database connections after you have done with it
         myDataBase.close();
-
-        // I am not going to do the retrieve part in this post. So this is just a notification for satisfaction ;-)
-        //Toast.makeText(myContext, "Values inserted column ID is :"+affectedColumnId, Toast.LENGTH_SHORT).show();
-        Log.d("DEBUG", "DBTEST: "+affectedColumnId);
 
     }
 
