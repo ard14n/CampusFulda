@@ -258,4 +258,6 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
 
 
 
+
+
 }

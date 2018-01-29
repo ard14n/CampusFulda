@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_weight="2"
+        android:orientation="horizontal">
 
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapviewdetail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
@@ -66,8 +66,8 @@
                         android:layout_marginTop="5dp"
                         android:drawableLeft="@drawable/ic_my_location_black_24dp"
                         android:drawablePadding="5dp"
-                        android:textColor="@android:color/holo_green_light"
-                        android:text="" />
+                        android:text=""
+                        android:textColor="@android:color/holo_green_light" />
 
 
                     <TextView
@@ -83,7 +83,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="20dp"
-                        android:background="#e3e3e3"/>
+                        android:background="#e3e3e3" />
 
                     <TextView
                         android:id="@+id/openedCaption"
@@ -106,16 +106,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="20dp"
-                        android:background="#e3e3e3"/>
+                        android:background="#e3e3e3" />
 
                     <TextView
                         android:id="@+id/tagscaption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:textSize="16dp"
+                        android:text="Tags"
                         android:textColor="#111111"
-                        android:text="Tags" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/tags"
@@ -129,16 +129,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="20dp"
-                        android:background="#e3e3e3"/>
+                        android:background="#e3e3e3" />
 
                     <TextView
                         android:id="@+id/addresscaption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:textSize="16dp"
+                        android:text="Addresse"
                         android:textColor="#111111"
-                        android:text="Addresse" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/address_content"
