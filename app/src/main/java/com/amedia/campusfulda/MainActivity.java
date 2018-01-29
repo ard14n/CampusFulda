@@ -42,23 +42,14 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
 
 
 
-        String s = "Campusplan";
-        SpannableString ss1 =  new SpannableString(s);
-        //ss1.setSpan(new RelativeSizeSpan(0.5f), 17,25, 0); // set size
-        //ss1.setSpan(new ForegroundColorSpan(Color.WHITE), 17, 25, 0);// set color
+        String apptitle = "Campusplan Fulda";
 
         ActionBar actionBar = getSupportActionBar();
-        //actionBar.setDisplayShowHomeEnabled(true);
-        //actionBar.setIcon(R.drawable.soo);
-        actionBar.setTitle(ss1);
+        actionBar.setTitle(apptitle);
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.navView);
-
-
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navView);
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-
 
         Fragment fragment = null;
         Class fragmentClass = CategoryFragment.class;

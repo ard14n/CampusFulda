@@ -31,7 +31,10 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
- * Created by Dini on 17.01.2018.
+ *
+ * Ist das Fragment, dass die Details der ausgewählten Location anzeigt
+ *
+ *
  */
 
 public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyCallback{
@@ -59,21 +62,27 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
                              Bundle savedInstanceState) {
 
 
-        // Inflate the layout for this fragment
+        // Inflater setzt das Fragment auf den Container und zeigt es an
         View view =  inflater.inflate(R.layout.fragment_categoryitemdetails, container, false);
 
 
-        mapViewDetail = (MapView) view.findViewById(R.id.mapviewdetail);
+        //Google Maps Karte
+        mapViewDetail = view.findViewById(R.id.mapviewdetail);
         mapViewDetail.onCreate(savedInstanceState);
         mapViewDetail.getMapAsync(this);
 
-
+        //Location Helper Objekt
         locationHelper = new LocationHelper(getContext());
+
+        //Zeigt einen Dialog, über welchen man sein GPS einschalten kann
         locationHelper.enableLocationDialogBuilder();
+
+        //Prüft ob GPS eingeschaltet ist
         isGpsEnabled = locationHelper.isLocationEnabled();
 
         Bundle b = getArguments();
 
+        //TextViews werden geholt
         context = view.findViewById(R.id.context);
         distance = view.findViewById(R.id.distance);
         tags = view.findViewById(R.id.tags);
@@ -83,32 +92,30 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         walking_distance = view.findViewById(R.id.walking_time);
         address = view.findViewById(R.id.address_content);
 
-        //String context_result = b.getString("context");
+        //Holt die Daten aus dem Bundle
         subject_result = b.getString("subject");
         String tags_result = b.getString("tags");
-
         String info_result = b.getString("info");
-
         String address_result = b.getString("address");
-
         String opened_result = b.getString("opened");
 
-
-
+        //Längen und Breitengrad
         clat = b.getDouble("clat");
         clong = b.getDouble("clong");
 
-        Toast.makeText(getContext(), "CLAT: "+clat+" CLONG: "+clong, Toast.LENGTH_SHORT).show();
+        //DEBUG
+        //Toast.makeText(getContext(), "CLAT: "+clat+" CLONG: "+clong, Toast.LENGTH_SHORT).show();
 
+
+        //Setzt die TextViews
         context.setText(subject_result);
-
         tags.setText(tags_result);
         info.setText(android.text.Html.fromHtml(info_result));
         address.setText(address_result);
 
 
 
-
+        //Falls Öffnungszeiten leer sind setze auf keine Öffnungszeiten
         if(opened_result.equals("")){
             openedCaption.setText("Keine Öffnungszeiten vorhanden");
         } else {
@@ -119,9 +126,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
 
         opened.setText(opened_result);
 
-
-
-
+        //Überprüft ob die Berechtigungen für GPS erteilt wurden und ob GPS an ist
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             Toast.makeText(getContext(), "Überprüfe bitte die Berechtigungen deiner App", Toast.LENGTH_SHORT).show();
@@ -139,36 +144,40 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
                         2000,
                         10, locationListenerGPS);
 
-
                 distance.setText("GPS Signal gefunden - Berechne Entfernung");
 
-
+            } else {
+                distance.setText("Kein GPS Signal gefunden");
             }
-
-
         }
 
         return view;
 
     }
 
+    //Location Listener wartet auf Änderungen der Koordinaten
     LocationListener locationListenerGPS = new LocationListener() {
         @Override
         public void onLocationChanged(android.location.Location location) {
-            double latitude=location.getLatitude();
-            double longitude=location.getLongitude();
-            String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
+
+            //
+            double latitude = location.getLatitude();
+            double longitude = location.getLongitude();
+
+            //DEBUG
+            //String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
             //Toast.makeText(getContext(),msg,Toast.LENGTH_LONG).show();
 
+            //Holt die Entfernung
             float result[] = {0};
             android.location.Location.distanceBetween(location.getLatitude(), location.getLongitude(), clat, clong, result);
-
             int res = (int) result[0];
-            double res_walking = (double) result[0];
-            //res_walking = Math.round(res_walking);
 
+            //Holt die Entfernung und die Gehminuten
+            double res_walking = (double) result[0];
             int walking_time = walkingSpeedCalculator(res_walking);
 
+            //Setzt die Entfernung und die Gehminuten bis zum Ziel
             distance.setText(String.valueOf(res)+" Meter von dir entfernt");
             walking_distance.setText("ca. "+ walking_time +" Min Fußweg");
 
@@ -216,14 +225,15 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
     public void onMapReady(GoogleMap map) {
         final LatLng clickedLocation = new LatLng(clat, clong);
 
+        //Setzt den Marker auf den geklickten Standort
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(clat, clong))
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                 .title(subject_result));
 
 
+        //Optionen der Map
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(clickedLocation, 18));
-
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.setTrafficEnabled(true);
         map.setIndoorEnabled(true);

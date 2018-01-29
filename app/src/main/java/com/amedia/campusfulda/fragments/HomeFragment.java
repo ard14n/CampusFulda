@@ -60,13 +60,15 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-
+        //Holt Buttons
         webFulda = view.findViewById(R.id.button1);
         webHorstl = view.findViewById(R.id.button2);
         webElearning = view.findViewById(R.id.button3);
         webSystem = view.findViewById(R.id.button4);
         webStudents = view.findViewById(R.id.studentsofficebutton);
 
+
+        //Setzt für jeden Button einen OnclickListener
         webFulda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +113,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
