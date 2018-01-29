@@ -21,6 +21,13 @@ import java.util.List;
 
 /**
  * Created by Dini on 18.01.2018.
+ *
+ * SplashActivity zeigt das Logo der App an und holt
+ * beim ersten Start der App die Daten vom Server,
+ * und schreibt sie in die Datenbank.
+ * Falls die Datenbank existiert wird die SplashActivity
+ * bei allen anderen Starts nicht mehr angezeigt.
+ *
  */
 
 public class SplashActivity extends AppCompatActivity {
@@ -36,8 +43,9 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-
-        if(doesDatabaseExist(this, "so_systems.db")){
+        //Falls Datenbank existiert dann wird die MainActivity aufgerufen,
+        //falls nicht wird die Datenbank erstellt und der Request zum Server wird gemacht
+        if(doesDbExist(this, "so_systems.db")){
 
             Toast.makeText(this, "Ich existiere", Toast.LENGTH_SHORT).show();
 
@@ -47,7 +55,8 @@ public class SplashActivity extends AppCompatActivity {
 
         } else {
 
-            Toast.makeText(this, "Ich werde erstellt", Toast.LENGTH_SHORT).show();
+            //DEBUG
+            //Toast.makeText(this, "Ich werde erstellt", Toast.LENGTH_SHORT).show();
             dbhelper = new DatabaseHelper(this, null, null, 1);
 
             new GetDataJSON().execute();
@@ -55,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-
+    //AsyncTask um die Daten als JSON String vom Server zu holen und in die Datenbank zu schreiben
     private class GetDataJSON extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -81,8 +90,9 @@ public class SplashActivity extends AppCompatActivity {
 
             JSONArray array = null;
             try {
+
                 array = new JSONArray(json);
-                Log.d("DEBUG", "OR YOU");
+
                 for (int i = 0; i < array.length(); i++){
 
                     JSONObject obj = array.getJSONObject(i);
@@ -119,7 +129,6 @@ public class SplashActivity extends AppCompatActivity {
 
             List<CampusItems> campuslist = dbhelper.getAllItems();
             DataImporterExpandable.getData(campuslist);
-            CategoryFragment.setAllData();
 
             Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
             startActivity(intent);
@@ -129,8 +138,17 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-
-    private static boolean doesDatabaseExist(Context context, String dbName) {
+    /*
+    * Überprüft ob die Datenbank schon vorhanden ist
+    * Falls Datenbank vorhanden ist, dann gibt die Methode true zurück,
+    * falls nicht, dann false
+    *
+    * @param context
+    * @param dbname Vom Typ String und ist der Name der gesuchten Datenbank
+    *
+    * @return boolean
+    * */
+    private static boolean doesDbExist(Context context, String dbName) {
         File dbFile = context.getDatabasePath(dbName);
         return dbFile.exists();
     }

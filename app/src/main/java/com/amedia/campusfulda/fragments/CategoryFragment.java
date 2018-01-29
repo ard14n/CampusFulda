@@ -33,6 +33,9 @@ import java.util.ListIterator;
 
 /**
  * Created by Dini on 15.01.2018.
+ *
+ * Zeigt die ExpandableListView mit den Kategorien für die Suche an
+ *
  */
 
 public class CategoryFragment extends Fragment {
@@ -47,10 +50,6 @@ public class CategoryFragment extends Fragment {
     HashMap<String, List<String>> expandableListDetail;
     private DatabaseHelper myDatabase;
 
-    public CategoryFragment() {
-
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -61,39 +60,26 @@ public class CategoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view =  inflater.inflate(R.layout.fragment_category, container, false);
 
         myDatabase = new DatabaseHelper(getContext(), null, null, 1);
-
         expandableListView = view.findViewById(R.id.expandableListView);
+
+        //Holt die Daten aus der Datenbank als List mit den CampusItems
         final List<CampusItems> campuslist = myDatabase.getAllItems();
 
+        //Übergibt die CampusList dem DataImporterExpandable
         expandableListDetail = DataImporterExpandable.getData(campuslist);
 
-
+        //Holt die Keys, die gleichzeitig auch die Kategorien sind und setzt sie als ListTitle
         expandableListTitle =  new ArrayList<String>(expandableListDetail.keySet());
 
         expandableListAdapter = new CustomExpandableListAdapter(getContext(), expandableListTitle, expandableListDetail);
-
         expandableListView.setAdapter(expandableListAdapter);
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                //Toast.makeText(getContext(), expandableListTitle.get(groupPosition) + " List Expanded.", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                //Toast.makeText(getContext(), expandableListTitle.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
+        //Der OnclickListener für die Untermenüpunkte der ExpandableListView
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
@@ -113,10 +99,12 @@ public class CategoryFragment extends Fragment {
                 String tags = "";
                 String opened = "";
 
-
+                //Durchläuft die CampusItems bis das Subject der Untermenüpunkte in der CampusItemsList gefunden wurde
                 for (ListIterator<CampusItems> iter = campuslist.listIterator(); iter.hasNext(); ) {
                     CampusItems c = iter.next();
                     Log.d("ICH BIN DEBUUUUUUUUUUUG", "NAMEEEE: "+c.getName()+" SUBJEEEEECT: "+subject);
+
+
                     if(c.getName().equals(subject)){
 
                         info = c.getInfo();
@@ -133,6 +121,8 @@ public class CategoryFragment extends Fragment {
 
                 }
 
+                //Erzeugt einen neuen Bundle und übergibt die benötigten Daten damit sie in dem
+                //nächsten Fragment angezeigt werden können
                 Bundle b = new Bundle();
                 b.putString("context", context);
                 b.putString("subject", subject);
@@ -146,11 +136,15 @@ public class CategoryFragment extends Fragment {
                 FragmentManager fmanager = getActivity().getSupportFragmentManager();
                 FragmentTransaction ftransaction = fmanager.beginTransaction();
 
+                //Erzeugt ein neues Objekt der CategoryItemDetailsFragment-Klasse
                 CategoryItemDetailsFragment itemdetails = new CategoryItemDetailsFragment();
+
+                //Übergibt das Bundle an das Fragment
                 itemdetails.setArguments(b);
 
+                //Ersetzt den FragmentContainer und ruft das Fragment auf
                 ftransaction.replace(R.id.flContent, itemdetails);
-                //ftransaction.addToBackStack("categorydetails");
+                ftransaction.addToBackStack(null);
                 ftransaction.commit();
 
                 Toast.makeText(
@@ -176,51 +170,9 @@ public class CategoryFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public static void setAllData(){
 
 
-
-    }
-
-
-    private class GetDataJSON extends AsyncTask<Void, Void, String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-
-        }
-
-        @Override
-        protected String doInBackground(Void... arg0) {
-            try {
-                json = Jsoup.connect("http://91.205.173.172/t3_project/fileadmin/myphp/campusDetails.php")
-                        .timeout(1000000)
-                        .header("Accept", "text/javascript")
-                        .userAgent("Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0")
-                        .get()
-                        .body()
-                        .text();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-
-            return null;
-        }
-
-
-        protected void onPostExecute(String result){
-
-
-
-
-        }
-    }
-
-
+    //Setzt den Indicator für die ListView nach rechts anstatt nach Links
     private void setRightIndicator(){
 
 
