@@ -4,128 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="0dp">
 
 
-    <LinearLayout
+
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="horizontal">
+        android:gravity="bottom"
+        sothree:umanoScrollableView="@+id/scrollCampus"
+        sothree:umanoPanelHeight="68dp"
+        sothree:umanoShadowHeight="4dp">
 
-
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapviewdetail"
+        <include
+            layout="@layout/categorydetails_map"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
+        <include
+            layout="@layout/slideup_innerlayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent" />
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:id="@+id/context"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#2FAECE"
-                        android:textSize="18dp" />
-
-
-                    <TextView
-                        android:id="@+id/info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView" />
-
-                    <TextView
-                        android:id="@+id/distance"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:drawableLeft="@drawable/ic_my_location_black_24dp"
-                        android:drawablePadding="5dp"
-                        android:textColor="@android:color/holo_green_light" />
-
-
-                    <TextView
-                        android:id="@+id/walking_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:drawableLeft="@drawable/ic_directions_walk_black_24dp"
-                        android:drawablePadding="5dp"
-                        android:textColor="#0066B3" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/dividerColor" />
-
-                    <TextView
-                        android:id="@+id/openedCaption"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/openedCaption"
-                        android:textColor="@color/customBlack"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/opened"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:padding="5dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/dividerColor" />
-
-                    <TextView
-                        android:id="@+id/addressCaption"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/addressCaption"
-                        android:textColor="@color/customBlack"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/address_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:padding="5dp" />
-
-                </LinearLayout>
-            </ScrollView>
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

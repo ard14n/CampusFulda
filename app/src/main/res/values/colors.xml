@@ -8,4 +8,5 @@
     <color name="colorSoAccentInactive">#a0a0a0</color>
     <color name="customBlack">#111111</color>
     <color name="dividerColor">#e3e3e3</color>
+    <color name="soColor">#2FAECE</color>
 </resources>

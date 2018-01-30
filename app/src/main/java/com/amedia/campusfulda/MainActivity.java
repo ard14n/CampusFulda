@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
                                                                 InfoFragment.OnFragmentInteractionListener,
                                                                 QuicklinksFragment.OnFragmentInteractionListener {
 
-
     private String json;
     private DatabaseHelper myDatabase;
     private ProgressDialog progressDialog;
@@ -46,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
 
         //Setzt das Fragment, dass man beim App-Start sieht
         switchToDefaultFragment();
-
-
 
         //Der BottomNavListener
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -75,10 +72,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
                         return true;
                     }
                 });
-
-
-
-
 
     }
 
@@ -179,9 +172,12 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
 
         super.onStop();
 
-        //Setzt in den SharedPreferences den Wert für ASKGPS auf True, wenn die App geschlossen wird
-        //Damit beim nächsten Start wieder nachgefragt wird ob der Nutzer sein GPS einschalten will,
-        //falls er es noch nicht getan hat
+        /*
+        * Setzt in den SharedPreferences den Wert für ASKGPS auf True, wenn die App geschlossen wird.
+        * Damit beim nächsten Start wieder nachgefragt wird ob der Nutzer sein GPS einschalten will,
+        * falls er es noch nicht getan hat.
+        *
+        */
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.edit().putBoolean("ASKGPS", true).commit();
 
