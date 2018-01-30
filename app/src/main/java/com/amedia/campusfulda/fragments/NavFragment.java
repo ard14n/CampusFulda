@@ -86,7 +86,10 @@ public class NavFragment extends Fragment implements OnMapReadyCallback {
             if (isGpsEnabled) {
 
                 lm = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-                Toast.makeText(getContext(), "Okay dein GPS ist wohl an", Toast.LENGTH_SHORT).show();
+
+                //DEBUG
+                //Toast.makeText(getContext(), "Okay dein GPS ist wohl an", Toast.LENGTH_SHORT).show();
+
                 location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                 lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
@@ -163,6 +166,11 @@ public class NavFragment extends Fragment implements OnMapReadyCallback {
         mapView.onLowMemory();
     }
 
+    /*
+    * Wenn die Map fertig geladen ist werden die CampusItems aus der Datenbank geholt
+    * und in einer for-Schleife als Marker auf der Karte gesetzt
+    *
+    * */
 
     @Override
     public void onMapReady(GoogleMap map) {
@@ -178,22 +186,13 @@ public class NavFragment extends Fragment implements OnMapReadyCallback {
             String info = c.getInfo();
             double clat = c.getLat();
             double clong = c.getLong();
-            HashMap statematrix = c.getStatematrix();
 
+            map.addMarker(new MarkerOptions()
+                    .position(new LatLng(clat, clong))
+                    .title(name)
+                    .snippet(info)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 
-            if (statematrix.get("fahrrad").equals(1)){
-                map.addMarker(new MarkerOptions()
-                        .position(new LatLng(clat, clong))
-                        .title(name)
-                        .snippet("Fahrradständer")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-            } else {
-                map.addMarker(new MarkerOptions()
-                        .position(new LatLng(clat, clong))
-                        .title(name)
-                        .snippet(info)
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-            }
 
 
         }

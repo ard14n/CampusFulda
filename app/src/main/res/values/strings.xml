@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Campus Fulda</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quicklinks">Quicklinks</string>
+    <string name="studentsoffice_button">Studentsoffice Social</string>
+    <string name="hsfuldaweb_button">HS Fulda Web</string>
+    <string name="horstl_button">HORSTL</string>
+    <string name="system2teach_button">System2Teach</string>
+    <string name="elearning_button">E-Learning</string>
+    <string name="bottomnav_categories">Kategorien</string>
+    <string name="bottomnav_map">Karte</string>
+    <string name="bottomnav_quicklinks">Quicklinks</string>
+    <string name="bottomnav_info">Info</string>
 </resources>

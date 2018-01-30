@@ -4,23 +4,23 @@
     app:theme="@style/mystyle">
 
     <item android:id="@+id/action_search"
-        android:title="Kategorien"
+        android:title="@string/bottomnav_categories"
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_navigation"
-        android:title="Karte"
+        android:title="@string/bottomnav_map"
         android:icon="@drawable/ic_pin_drop_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/action_quicklinks"
         android:icon="@drawable/ic_grade_black_24dp"
-        android:title="Quicklinks"
+        android:title="@string/bottomnav_quicklinks"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/action_settings"
-        android:title="Info"
+    <item android:id="@+id/action_info"
+        android:title="@string/bottomnav_info"
         android:icon="@drawable/ic_info_black_24dp"
         app:showAsAction="ifRoom"/>
 </menu>

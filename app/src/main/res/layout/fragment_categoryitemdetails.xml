@@ -109,34 +109,11 @@
                         android:background="#e3e3e3" />
 
                     <TextView
-                        android:id="@+id/tagscaption"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Tags"
-                        android:textColor="#111111"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/tags"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:padding="5dp"
-                        android:text="TextView" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="20dp"
-                        android:background="#e3e3e3" />
-
-                    <TextView
                         android:id="@+id/addresscaption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="Addresse"
+                        android:text="Adresse"
                         android:textColor="#111111"
                         android:textSize="16dp" />
 

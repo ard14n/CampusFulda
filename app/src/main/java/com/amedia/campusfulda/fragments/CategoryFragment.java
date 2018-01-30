@@ -88,16 +88,11 @@ public class CategoryFragment extends Fragment {
                 String context = expandableListTitle.get(groupPosition);
                 String subject = expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition);
 
-                String regex = ".*$";
 
-                subject = subject.replaceAll(regex, "").trim();
+                //Erzeugt einen neuen Bundle und übergibt die benötigten Daten damit sie in dem
+                //nächsten Fragment angezeigt werden können
+                Bundle b = new Bundle();
 
-                double clat = 0;
-                double clong = 0;
-                String info = "";
-                String address = "";
-                String tags = "";
-                String opened = "";
 
                 //Durchläuft die CampusItems bis das Subject der Untermenüpunkte in der CampusItemsList gefunden wurde
                 for (ListIterator<CampusItems> iter = campuslist.listIterator(); iter.hasNext(); ) {
@@ -105,15 +100,17 @@ public class CategoryFragment extends Fragment {
                     Log.d("ICH BIN DEBUUUUUUUUUUUG", "NAMEEEE: "+c.getName()+" SUBJEEEEECT: "+subject);
 
 
-                    if(c.getName().equals(subject)){
+                    if(subject.equals(c.getName()+"\n "+c.getInfo())){
 
-                        info = c.getInfo();
-                        address = c.getAddress();
-                        tags = c.getTags();
-                        Log.d("TAAAAAAAG", "CLAAAAAAAAAAAAAAAAAAAAAAAAAAT222222222"+c.getLat());
-                        clat = c.getLat();
-                        clong = c.getLong();
-                        opened = c.getOpened();
+
+                        b.putString("context", context);
+                        b.putString("subject", c.getName());
+                        b.putString("info", c.getInfo());
+                        b.putString("address", c.getAddress());
+                        b.putString("tags", c.getTags());
+                        b.putString("opened", c.getOpened());
+                        b.putDouble("clat", c.getLat());
+                        b.putDouble("clong", c.getLong());
 
                         break;
 
@@ -121,17 +118,8 @@ public class CategoryFragment extends Fragment {
 
                 }
 
-                //Erzeugt einen neuen Bundle und übergibt die benötigten Daten damit sie in dem
-                //nächsten Fragment angezeigt werden können
-                Bundle b = new Bundle();
-                b.putString("context", context);
-                b.putString("subject", subject);
-                b.putString("info", info);
-                b.putString("address", address);
-                b.putString("tags", tags);
-                b.putString("opened", opened);
-                b.putDouble("clat", clat);
-                b.putDouble("clong", clong);
+
+
 
                 FragmentManager fmanager = getActivity().getSupportFragmentManager();
                 FragmentTransaction ftransaction = fmanager.beginTransaction();

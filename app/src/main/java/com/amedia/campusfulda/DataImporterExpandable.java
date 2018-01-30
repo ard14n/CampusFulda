@@ -1,5 +1,8 @@
 package com.amedia.campusfulda;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,54 +68,54 @@ public class DataImporterExpandable {
 
             if(s_gebaeude == 1){
 
-                gebauede.add(c.getName()+"\n"+c.getInfo());
+                gebauede.add(c.getName()+"\n "+c.getInfo());
 
             }
 
             if(s_wasser == 1){
 
-                wasserspender.add(c.getName()+"\n"+c.getInfo());
+                wasserspender.add(c.getName()+"\n "+c.getInfo());
 
             }
 
             if(s_snacks == 1){
 
-                snacks.add(c.getName()+"\n"+c.getInfo());
+                snacks.add(c.getName()+"\n "+c.getInfo());
 
             }
 
             if(s_drucker == 1){
 
-                drucker.add(c.getName()+"\n"+c.getInfo());
+                drucker.add(c.getName()+"\n "+c.getInfo());
 
             }
 
             if(s_geld == 1){
 
-                geldautomaten.add(c.getName()+"\n"+c.getInfo());
+                geldautomaten.add(c.getName()+"\n "+c.getInfo());
 
             }
 
             if(s_park == 1){
 
-                parkplaetze.add(c.getName()+"\n"+c.getInfo());
+                parkplaetze.add(c.getName()+"\n "+c.getInfo());
 
             }
 
             if(s_bus == 1){
 
-                bushaltestellen.add(c.getName()+"\n"+c.getInfo());
+                bushaltestellen.add(c.getName()+"\n "+c.getInfo());
 
             }
 
             if(s_fahrrad == 1){
 
-                fahrradstaender.add(c.getName()+"\n"+c.getInfo());
+                fahrradstaender.add(c.getName()+"\n "+c.getInfo());
 
             }
             if(s_freizeit == 1){
 
-                freizeit.add(c.getName()+"\n"+c.getInfo());
+                freizeit.add(c.getName()+"\n "+c.getInfo());
 
             }
 

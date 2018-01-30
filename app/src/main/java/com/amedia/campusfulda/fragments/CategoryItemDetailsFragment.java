@@ -32,14 +32,15 @@ import java.text.DecimalFormat;
 
 /**
  *
- * Ist das Fragment, dass die Details der ausgewählten Location anzeigt
+ * Zeigt die Details der ausgewählten Location an
+ * und berechnet Entfernung, sowie Fußweg bis zum Ziel
  *
  *
  */
 
 public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyCallback{
 
-    private TextView context, distance, tags, info, opened, openedCaption, address ,walking_distance;
+    private TextView context, distance, info, opened, openedCaption, address ,walking_distance;
     private MapView mapViewDetail;
     private LocationHelper locationHelper;
     private boolean isGpsEnabled;
@@ -85,7 +86,6 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         //TextViews werden geholt
         context = view.findViewById(R.id.context);
         distance = view.findViewById(R.id.distance);
-        tags = view.findViewById(R.id.tags);
         info = view.findViewById(R.id.info);
         opened = view.findViewById(R.id.opened);
         openedCaption = view.findViewById(R.id.openedCaption);
@@ -94,7 +94,6 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
 
         //Holt die Daten aus dem Bundle
         subject_result = b.getString("subject");
-        String tags_result = b.getString("tags");
         String info_result = b.getString("info");
         String address_result = b.getString("address");
         String opened_result = b.getString("opened");
@@ -109,7 +108,6 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
 
         //Setzt die TextViews
         context.setText(subject_result);
-        tags.setText(tags_result);
         info.setText(android.text.Html.fromHtml(info_result));
         address.setText(address_result);
 
