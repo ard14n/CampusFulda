@@ -18,7 +18,7 @@
         android:gravity="bottom"
         sothree:umanoScrollableView="@+id/scrollCampus"
         sothree:umanoPanelHeight="68dp"
-        sothree:umanoShadowHeight="4dp">
+        sothree:umanoShadowHeight="6dp">
 
         <include
             layout="@layout/categorydetails_map"
