@@ -48,8 +48,7 @@
                         android:id="@+id/context"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Hier steht das Ergebnis"
-                        android:textColor="#2DC4B9"
+                        android:textColor="#2FAECE"
                         android:textSize="18dp" />
 
 
@@ -66,7 +65,6 @@
                         android:layout_marginTop="5dp"
                         android:drawableLeft="@drawable/ic_my_location_black_24dp"
                         android:drawablePadding="5dp"
-                        android:text=""
                         android:textColor="@android:color/holo_green_light" />
 
 
@@ -83,15 +81,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="20dp"
-                        android:background="#e3e3e3" />
+                        android:background="@color/dividerColor" />
 
                     <TextView
                         android:id="@+id/openedCaption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="Öffnungszeiten"
-                        android:textColor="#111111"
+                        android:text="@string/openedCaption"
+                        android:textColor="@color/customBlack"
                         android:textSize="16dp" />
 
                     <TextView
@@ -99,22 +97,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:padding="5dp"
-                        android:text="TextView" />
+                        android:padding="5dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="20dp"
-                        android:background="#e3e3e3" />
+                        android:background="@color/dividerColor" />
 
                     <TextView
-                        android:id="@+id/addresscaption"
+                        android:id="@+id/addressCaption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="Adresse"
-                        android:textColor="#111111"
+                        android:text="@string/addressCaption"
+                        android:textColor="@color/customBlack"
                         android:textSize="16dp" />
 
                     <TextView
@@ -122,8 +119,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:padding="5dp"
-                        android:text="" />
+                        android:padding="5dp" />
 
                 </LinearLayout>
             </ScrollView>

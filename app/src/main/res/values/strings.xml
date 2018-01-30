@@ -11,4 +11,6 @@
     <string name="bottomnav_map">Karte</string>
     <string name="bottomnav_quicklinks">Quicklinks</string>
     <string name="bottomnav_info">Info</string>
+    <string name="openedCaption">Öffnungszeiten</string>
+    <string name="addressCaption">Adresse</string>
 </resources>

@@ -45,17 +45,9 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
         //Setzt das Fragment, dass man beim App-Start sieht
-        Fragment fragment = null;
-        Class fragmentClass = CategoryFragment.class;
+        switchToDefaultFragment();
 
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
 
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.flContent, fragment).addToBackStack(null).commit();
 
         //Der BottomNavListener
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -90,6 +82,27 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
 
     }
 
+    /**
+     * Wechselt zum Standard-Fragment bei App-Start, ohne dass das Fragment
+     * zum BackStack hinzugefügt wird.
+     * Fixt den Whitescreen-Fragment-Bug wenn man lange genug auf Zurück gedrückt hat
+     *
+     */
+
+    public void switchToDefaultFragment(){
+        Fragment fragment = null;
+        Class fragmentClass = CategoryFragment.class;
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.flContent, fragment).commit();
+    }
+
 
     //Wechselt zum Kategorien-Fragment
     public void switchToCategoryFragment() {
@@ -117,8 +130,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
         } catch (Exception e){
             e.printStackTrace();
         }
-
-
 
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent, fragment).addToBackStack(null).commit();
