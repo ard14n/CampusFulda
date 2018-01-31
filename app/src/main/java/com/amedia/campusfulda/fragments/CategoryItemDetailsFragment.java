@@ -127,7 +127,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             Toast.makeText(getContext(), "Überprüfe bitte die Berechtigungen deiner App", Toast.LENGTH_SHORT).show();
-            distance.setText("Kein GPS Signal gefunden");
+            distance.setText("");
 
         } else {
 

@@ -15,4 +15,5 @@
     <string name="addressCaption">Adresse</string>
     <string name="nextButton">Weiter</string>
     <string name="skipButton">Überspringen</string>
+    <string name="permissionExplanation">Um alle Funktionen der App nutzen zu können, brauchen wir die Berechtigung für deinen Standort</string>
 </resources>
