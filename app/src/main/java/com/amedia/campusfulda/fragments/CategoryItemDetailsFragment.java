@@ -70,11 +70,11 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         //Location Helper Objekt
         locationHelper = new LocationHelper(getContext());
 
-        //Zeigt einen Dialog, über welchen man sein GPS einschalten kann
-        locationHelper.enableLocationDialogBuilder();
-
         //Prüft ob GPS eingeschaltet ist
         isGpsEnabled = locationHelper.isLocationEnabled();
+
+        //Zeigt einen Dialog, über welchen man sein GPS einschalten kann
+        locationHelper.enableLocationDialogBuilder();
 
         Bundle b = getArguments();
 
@@ -140,6 +140,8 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
 
             } else {
                 distance.setText("Kein GPS Signal gefunden");
+
+
             }
         }
 
@@ -152,7 +154,6 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         @Override
         public void onLocationChanged(android.location.Location location) {
 
-            //
             double latitude = location.getLatitude();
             double longitude = location.getLongitude();
 
@@ -195,6 +196,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
     @Override
     public void onResume() {
         mapViewDetail.onResume();
+        //lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
         super.onResume();
     }
 
@@ -202,6 +204,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
     public void onPause() {
         super.onPause();
         mapViewDetail.onPause();
+        //lm.removeUpdates(locationListenerGPS);
     }
 
     @Override
@@ -233,13 +236,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         map.setTrafficEnabled(true);
         map.setIndoorEnabled(true);
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+                askForPermission();
             return;
         }
         map.setMyLocationEnabled(true);
@@ -260,6 +257,45 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
 
         return without_decimals;
 
+    }
+
+    private void askForPermission(){
+
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Toast.makeText(getContext(), "Dankeeeee für die Berechtigung", Toast.LENGTH_LONG).show();
+
+                    if(!isGpsEnabled){
+
+                        Toast.makeText(getContext(), "Du musst noch dein GPS einschalten", Toast.LENGTH_LONG).show();
+
+
+                    } else {
+                        Toast.makeText(getContext(), "Okay die Berechtigung wurde erteilt und dein GPS ist an", Toast.LENGTH_LONG).show();
+
+                    }
+
+                } else {
+
+                    Toast.makeText(getContext(), "Ja gut dann halt nicht", Toast.LENGTH_LONG).show();
+
+
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
 

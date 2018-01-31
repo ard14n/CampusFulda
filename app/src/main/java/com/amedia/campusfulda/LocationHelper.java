@@ -38,6 +38,14 @@ public class LocationHelper implements LocationListener {
         latitude = location.getLatitude();
     }
 
+    public double getLatitude(){
+        return latitude;
+    }
+
+    public double getLongitude(){
+        return longitude;
+    }
+
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
 

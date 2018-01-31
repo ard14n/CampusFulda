@@ -68,7 +68,7 @@ public class NavFragment extends Fragment implements OnMapReadyCallback {
 
         locationHelper = new LocationHelper(getContext());
 
-        isGpsEnabled = locationHelper.isLocationEnabled();
+        //isGpsEnabled = locationHelper.isLocationEnabled();
 
         myDatabase = DatabaseHelper.createInstance(getContext(), null, 1);
 

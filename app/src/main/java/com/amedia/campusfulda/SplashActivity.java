@@ -2,6 +2,8 @@ package com.amedia.campusfulda;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +37,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private String json;
     private DatabaseHelper dbhelper;
+    private boolean isNetworkAvailable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash);
 
+        isNetworkAvailable = isDataConnectionAvailable(this);
 
         //Falls Datenbank existiert dann wird die MainActivity aufgerufen,
         //falls nicht wird die Datenbank erstellt und der Request zum Server wird gemacht
@@ -56,11 +60,20 @@ public class SplashActivity extends AppCompatActivity {
 
         } else {
 
-            //DEBUG
-            //Toast.makeText(this, "Ich werde erstellt", Toast.LENGTH_SHORT).show();
-            dbhelper = DatabaseHelper.createInstance(this, null,  1);
+            //Überprüft App auf Internetverbindung
+            if (isNetworkAvailable){
+                //DEBUG
+                //Toast.makeText(this, "Ich werde erstellt", Toast.LENGTH_SHORT).show();
+                dbhelper = DatabaseHelper.createInstance(this, null,  1);
 
-            new GetDataJSON().execute();
+                new GetDataJSON().execute();
+
+            } else {
+
+                Toast.makeText(this, "Sorry, aber ohne Internet kommen wir hier nicht weiter", Toast.LENGTH_LONG);
+
+            }
+
 
         }
     }
@@ -152,6 +165,15 @@ public class SplashActivity extends AppCompatActivity {
     private static boolean doesDbExist(Context context, String dbName) {
         File dbFile = context.getDatabasePath(dbName);
         return dbFile.exists();
+    }
+
+
+
+    public static boolean isDataConnectionAvailable(Context context) {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
 
