@@ -1,13 +1,11 @@
 package com.amedia.campusfulda.fragments;
 
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.amedia.campusfulda.CampusItems;
 import com.amedia.campusfulda.CustomExpandableListAdapter;
@@ -23,9 +20,6 @@ import com.amedia.campusfulda.DataImporterExpandable;
 import com.amedia.campusfulda.DatabaseHelper;
 import com.amedia.campusfulda.R;
 
-import org.jsoup.Jsoup;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -97,11 +91,11 @@ public class CategoryFragment extends Fragment {
                 //Durchläuft die CampusItems bis das Subject der Untermenüpunkte in der CampusItemsList gefunden wurde
                 for (ListIterator<CampusItems> iter = campuslist.listIterator(); iter.hasNext(); ) {
                     CampusItems c = iter.next();
-                    Log.d("ICH BIN DEBUUUUUUUUUUUG", "NAMEEEE: "+c.getName()+" SUBJEEEEECT: "+subject);
 
+                    //DEBUG
+                    //Log.d("ICH BIN DEBUUUUUUUUUUUG", "NAMEEEE: "+c.getName()+" SUBJEEEEECT: "+subject);
 
                     if(subject.equals(c.getName()+"\n "+c.getInfo())){
-
 
                         b.putString("context", context);
                         b.putString("subject", c.getName());
@@ -119,8 +113,6 @@ public class CategoryFragment extends Fragment {
                 }
 
 
-
-
                 FragmentManager fmanager = getActivity().getSupportFragmentManager();
                 FragmentTransaction ftransaction = fmanager.beginTransaction();
 
@@ -135,14 +127,15 @@ public class CategoryFragment extends Fragment {
                 ftransaction.addToBackStack(null);
                 ftransaction.commit();
 
-                Toast.makeText(
+                //DEBUG
+                /*Toast.makeText(
                         getContext(),
                         expandableListTitle.get(groupPosition)
                                 + " -> "
                                 + expandableListDetail.get(
                                 expandableListTitle.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT
-                ).show();
+                ).show();*/
                 return false;
             }
         });

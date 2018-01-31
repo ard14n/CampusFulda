@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     private SQLiteDatabase myDataBase;
 
-
+    //TODO SINGLETON DB 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DB_NAME, null, DB_VERSION);
     }

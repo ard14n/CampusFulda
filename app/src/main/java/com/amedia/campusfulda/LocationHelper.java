@@ -1,5 +1,6 @@
 package com.amedia.campusfulda;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,8 +9,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
@@ -17,7 +20,7 @@ import android.widget.Toast;
  * Created by Dini on 18.01.2018.
  */
 
-public class LocationHelper implements LocationListener {
+public class LocationHelper extends Service implements LocationListener {
 
     private static LocationManager locationManager;
     private static Context myContext;
@@ -107,4 +110,9 @@ public class LocationHelper implements LocationListener {
     }
 
 
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
 }
