@@ -47,9 +47,10 @@ public class SplashActivity extends AppCompatActivity {
         //falls nicht wird die Datenbank erstellt und der Request zum Server wird gemacht
         if(doesDbExist(this, "so_systems.db")){
 
-            Toast.makeText(this, "Ich existiere", Toast.LENGTH_SHORT).show();
+            //DEBUG
+            //Toast.makeText(this, "Ich existiere", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, PermissionActivity.class);
             startActivity(intent);
             finish();
 

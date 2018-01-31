@@ -13,4 +13,6 @@
     <string name="bottomnav_info">Info</string>
     <string name="openedCaption">Öffnungszeiten</string>
     <string name="addressCaption">Adresse</string>
+    <string name="nextButton">Weiter</string>
+    <string name="skipButton">Überspringen</string>
 </resources>

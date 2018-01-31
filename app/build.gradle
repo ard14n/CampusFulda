@@ -21,9 +21,9 @@ android {
 
 
 
-        lintOptions {
-            disable 'RestrictedApi'
-        }
+    lintOptions {
+        disable 'RestrictedApi'
+    }
 
 }
 

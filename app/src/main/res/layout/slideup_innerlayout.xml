@@ -31,6 +31,7 @@
 
                 <ScrollView
                     android:id="@+id/scrollCampus"
+                    android:scrollbars="none"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
