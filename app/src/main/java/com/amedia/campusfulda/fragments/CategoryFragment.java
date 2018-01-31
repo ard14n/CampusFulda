@@ -42,7 +42,7 @@ public class CategoryFragment extends Fragment {
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
-    private DatabaseHelper myDatabase;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class CategoryFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_category, container, false);
 
-        myDatabase = new DatabaseHelper(getContext(), null, null, 1);
+        DatabaseHelper myDatabase = DatabaseHelper.createInstance(getContext(), "so_systems.db", 1);
         expandableListView = view.findViewById(R.id.expandableListView);
 
         //Holt die Daten aus der Datenbank als List mit den CampusItems

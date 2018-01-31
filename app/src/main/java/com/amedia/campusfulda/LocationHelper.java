@@ -20,7 +20,7 @@ import android.widget.Toast;
  * Created by Dini on 18.01.2018.
  */
 
-public class LocationHelper extends Service implements LocationListener {
+public class LocationHelper implements LocationListener {
 
     private static LocationManager locationManager;
     private static Context myContext;
@@ -109,10 +109,4 @@ public class LocationHelper extends Service implements LocationListener {
 
     }
 
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
 }

@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity {
 
             //DEBUG
             //Toast.makeText(this, "Ich werde erstellt", Toast.LENGTH_SHORT).show();
-            dbhelper = new DatabaseHelper(this, null, null, 1);
+            dbhelper = DatabaseHelper.createInstance(this, null,  1);
 
             new GetDataJSON().execute();
 
