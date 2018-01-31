@@ -38,9 +38,9 @@ import java.text.DecimalFormat;
  *
  */
 
-public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyCallback{
+public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyCallback {
 
-    private TextView context, distance, info, opened, openedCaption, address ,walking_distance;
+    private TextView context, distance, info, opened, openedCaption, address, walking_distance;
     private MapView mapViewDetail;
     private LocationHelper locationHelper;
     private boolean isGpsEnabled;
@@ -64,7 +64,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
 
 
         // Inflater setzt das Fragment auf den Container und zeigt es an
-        View view =  inflater.inflate(R.layout.fragment_categoryitemdetails, container, false);
+        View view = inflater.inflate(R.layout.fragment_categoryitemdetails, container, false);
 
 
         //Google Maps Karte
@@ -112,14 +112,13 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         address.setText(address_result);
 
 
-
         //Falls Öffnungszeiten leer sind setze auf keine Öffnungszeiten
-        if(opened_result.equals("")){
+        if (opened_result.equals("")) {
             openedCaption.setText("Keine Öffnungszeiten vorhanden");
         } else {
 
-            opened_result = opened_result.toString().replaceAll("\\<\\br>","\n");
-            opened_result = opened_result.toString().replaceAll("\\<.*?>","");
+            opened_result = opened_result.toString().replaceAll("\\<\\br>", "\n");
+            opened_result = opened_result.toString().replaceAll("\\<.*?>", "");
         }
 
         opened.setText(opened_result);
@@ -138,8 +137,8 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
                 Toast.makeText(getContext(), "Okay dein GPS ist wohl an", Toast.LENGTH_SHORT).show();
                 location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                lm.requestLocationUpdates( LocationManager.GPS_PROVIDER,
-                        2000,
+                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                        5000,
                         10, locationListenerGPS);
 
                 distance.setText("GPS Signal gefunden - Berechne Entfernung");
@@ -176,8 +175,8 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
             int walking_time = walkingSpeedCalculator(res_walking);
 
             //Setzt die Entfernung und die Gehminuten bis zum Ziel
-            distance.setText(String.valueOf(res)+" Meter von dir entfernt");
-            walking_distance.setText("ca. "+ walking_time +" Min Fußweg");
+            distance.setText(String.valueOf(res) + " Meter von dir entfernt");
+            walking_distance.setText("ca. " + walking_time + " Min Fußweg");
 
         }
 
@@ -203,16 +202,19 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         mapViewDetail.onResume();
         super.onResume();
     }
+
     @Override
     public void onPause() {
         super.onPause();
         mapViewDetail.onPause();
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         mapViewDetail.onDestroy();
     }
+
     @Override
     public void onLowMemory() {
         super.onLowMemory();
@@ -235,6 +237,17 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.setTrafficEnabled(true);
         map.setIndoorEnabled(true);
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        map.setMyLocationEnabled(true);
         map.setBuildingsEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(true);
     }
