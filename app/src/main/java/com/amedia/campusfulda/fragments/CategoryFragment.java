@@ -58,6 +58,7 @@ public class CategoryFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_category, container, false);
 
         DatabaseHelper myDatabase = DatabaseHelper.createInstance(getContext(), "so_systems.db", 1);
+
         expandableListView = view.findViewById(R.id.expandableListView);
 
         //Holt die Daten aus der Datenbank als List mit den CampusItems
