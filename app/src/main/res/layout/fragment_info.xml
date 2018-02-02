@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.amedia.campusfulda.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_info_outline_black_24dp"
+        android:drawableStart="@drawable/ic_info_outline_black_24dp"
+        android:drawablePadding="5dp"
+        android:text="@string/infoWhoCaption"
+        android:textColor="@color/customBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/infoWhoText"
+        android:textColor="@color/customBlack"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:drawablePadding="5dp"
+        android:drawableLeft="@drawable/ic_laptop_black_24dp"
+        android:drawableStart="@drawable/ic_laptop_black_24dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/infoDevelopedCaption"
+        android:textColor="@color/customBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/infoDevelopedText"
+        android:textColor="@color/customBlack"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        android:gravity="center_vertical"
+        android:text="@string/infoContactCaption"
+        android:textColor="@color/customBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/infoContactText"
+        android:textColor="@color/customBlack"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/infoContactEmail"
+        android:textColor="@color/customBlack"
+        android:textSize="14sp" />
+
+</LinearLayout>

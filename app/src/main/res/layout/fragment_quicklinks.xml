@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="com.amedia.campusfulda.fragments.QuicklinksFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quicklinks"
+                android:textColor="@color/customBlack"
+                android:textSize="16dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/hsfuldaweb_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_fulda"
+                    android:drawableLeft="@drawable/ic_public_black_24dp"
+                    android:padding="10dp"
+                    android:text="@string/hsfuldaweb_button"
+                    android:textColor="@android:color/holo_green_light" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/horstl_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_fulda"
+                    android:drawableLeft="@drawable/ic_public_black_24dp"
+                    android:padding="10dp"
+                    android:text="@string/horstl_button"
+                    android:textColor="@android:color/holo_green_light" />
+
+                <Button
+                    android:id="@+id/system2teach_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_fulda"
+                    android:drawableLeft="@drawable/ic_public_black_24dp"
+                    android:padding="10dp"
+                    android:text="@string/system2teach_button"
+                    android:textColor="@android:color/holo_green_light" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/elearning_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_fulda"
+                android:drawableLeft="@drawable/ic_public_black_24dp"
+                android:padding="10dp"
+                android:text="@string/elearning_button"
+                android:textColor="@android:color/holo_green_light" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
