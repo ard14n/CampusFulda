@@ -63,17 +63,17 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         // Now create matcher object.
         Matcher m = r.matcher(expandedListText);
         if (m.find()) {
-            System.out.println("Found value: " + m.group(0));
+            //System.out.println("Found value: " + m.group(0));
             infotext = m.group(0).trim();
         }else {
-            System.out.println("NO MATCH");
+            //System.out.println("NO MATCH");
         }
 
 
-        Log.d("DEBUG REGEX", expandedListText.replaceAll(regex, ""));
+        //Log.d("DEBUG REGEX", expandedListText.replaceAll(regex, ""));
 
 
-        TextView expandedListTextView = (TextView) convertView.findViewById(R.id.expandedListItem);
+        TextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
         TextView expandedListTextViewDescription = convertView.findViewById(R.id.expandedListItemDescription);
         expandedListTextViewDescription.setText(infotext.trim());
         expandedListTextView.setText(expandedListText.replaceAll(regex, "").trim());

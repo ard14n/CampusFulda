@@ -7,13 +7,10 @@
     android:gravity="center">
 
 
-
-
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapviewdetail"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
 
 </LinearLayout>

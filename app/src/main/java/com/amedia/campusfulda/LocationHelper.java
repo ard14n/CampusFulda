@@ -16,9 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
-/**
- * Created by Dini on 18.01.2018.
- */
+
 
 public class LocationHelper implements LocationListener {
 

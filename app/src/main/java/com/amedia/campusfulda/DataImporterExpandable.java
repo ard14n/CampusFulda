@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
-/**
- * Created by Dini on 15.01.2018.
- */
 
 public class DataImporterExpandable {
 
@@ -124,13 +121,7 @@ public class DataImporterExpandable {
 
         return expandableListDetail;
 
-
     }
-
-
-
-
-
 
 
 }

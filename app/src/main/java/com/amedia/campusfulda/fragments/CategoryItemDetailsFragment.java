@@ -121,7 +121,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         //Überprüft ob die Berechtigungen für GPS erteilt wurden und ob GPS an ist
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            Toast.makeText(getContext(), "Überprüfe bitte die Berechtigungen deiner App", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "Überprüfe bitte die Berechtigungen deiner App", Toast.LENGTH_SHORT).show();
             distance.setText("");
 
         } else {
@@ -129,7 +129,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
             if (isGpsEnabled) {
 
                 lm = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-                Toast.makeText(getContext(), "Okay dein GPS ist wohl an", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Okay dein GPS ist wohl an", Toast.LENGTH_SHORT).show();
                 location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                 lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
@@ -139,7 +139,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
                 distance.setText("GPS Signal gefunden - Berechne Entfernung");
 
             } else {
-                distance.setText("Kein GPS Signal gefunden");
+                distance.setText("Kein GPS");
 
 
             }
@@ -204,7 +204,7 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
     public void onPause() {
         super.onPause();
         mapViewDetail.onPause();
-        //lm.removeUpdates(locationListenerGPS);
+
     }
 
     @Override
@@ -269,32 +269,30 @@ public class CategoryItemDetailsFragment extends Fragment implements OnMapReadyC
         switch (requestCode) {
             case 1: {
 
-                // If request is cancelled, the result arrays are empty.
+
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    Toast.makeText(getContext(), "Dankeeeee für die Berechtigung", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), "Dankeeeee für die Berechtigung", Toast.LENGTH_LONG).show();
 
                     if(!isGpsEnabled){
 
-                        Toast.makeText(getContext(), "Du musst noch dein GPS einschalten", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(), "Du musst noch dein GPS einschalten", Toast.LENGTH_LONG).show();
 
 
                     } else {
-                        Toast.makeText(getContext(), "Okay die Berechtigung wurde erteilt und dein GPS ist an", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(), "Okay die Berechtigung wurde erteilt und dein GPS ist an", Toast.LENGTH_LONG).show();
 
                     }
 
                 } else {
 
-                    Toast.makeText(getContext(), "Ja gut dann halt nicht", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), "Ja gut dann halt nicht", Toast.LENGTH_LONG).show();
 
 
                 }
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 

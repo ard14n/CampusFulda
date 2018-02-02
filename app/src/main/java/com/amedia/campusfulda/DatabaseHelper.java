@@ -11,10 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by Dini on 17.01.2018.
- */
-
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
@@ -190,7 +186,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 campus.setStatematrix(statematrix);
                 campuslist.add(campus);
 
-                Log.d("LAT LONG DEBUG "+c.getDouble(c.getColumnIndex(COL_LAT)), "Hi");
+                //Log.d("LAT LONG DEBUG "+c.getDouble(c.getColumnIndex(COL_LAT)), "Hi");
 
             } while (c.moveToNext());
         }

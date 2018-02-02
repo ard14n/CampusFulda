@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Campus Fulda</string>
+    <string name="app_name">Campusplan Fulda</string>
 
     <string name="quicklinks">Quicklinks</string>
     <string name="studentsoffice_button">Studentsoffice Social</string>
@@ -16,4 +16,18 @@
     <string name="nextButton">Weiter</string>
     <string name="skipButton">Überspringen</string>
     <string name="permissionExplanation">Um alle Funktionen der App nutzen zu können, brauchen wir die Berechtigung für deinen Standort</string>
+    <string name="splashtitle">Campusplan Fulda</string>
+    <string name="getStarted">Gleich geht\'s los!</string>
+    <string name="neededPermission">Erforderliche Berechtigung</string>
+    <string name="locationGPS">Standort - GPS</string>
+    <string name="dataIsLoading">Daten werden geladen...</string>
+    <string name="splashLogoDescription">Splash Logo</string>
+    <string name="infoWhoCaption">Für wen ist diese App ?</string>
+    <string name="infoWhoText">Für alle Erstis, Zweitis, Drittis, Profs, Dozenten, Lehrkräfte, Putzfrauen, Gäste, Interessierte..Ach einfach für alle :-)</string>
+    <string name="infoDevelopedCaption">Developed by</string>
+    <string name="infoDevelopedText">Ardian Jahja</string>
+    <string name="infoContactCaption">Kontakt</string>
+    <string name="infoContactText">Hast du Verbesserungsvorschläge oder Fragen ? Dann schreib mir einfach eine E-Mail:</string>
+    <string name="infoContactEmail">ardian.jahja@informatik.hs-fulda.de</string>
+
 </resources>

@@ -14,11 +14,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class PermissionActivity extends AppCompatActivity {
 
-    private Button skip_button, continue_button;
+    private Button continue_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class PermissionActivity extends AppCompatActivity {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
+            //DEBUG
             //Toast.makeText(this, "Überprüfe bitte die Berechtigungen deiner App", Toast.LENGTH_SHORT).show();
 
 
@@ -65,7 +67,6 @@ public class PermissionActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1: {
 
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -83,8 +84,6 @@ public class PermissionActivity extends AppCompatActivity {
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 

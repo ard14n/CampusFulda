@@ -4,26 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context="com.amedia.campusfulda.MainActivity">
 
 
-    <LinearLayout
+    <ExpandableListView
+        android:id="@+id/expandableListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:divider="@color/dividerColor"
+        android:dividerHeight="1dp"
+        android:drawablePadding="3dp"
+        android:indicatorRight="?android:attr/expandableListPreferredItemIndicatorLeft" />
 
-
-        <ExpandableListView
-            android:id="@+id/expandableListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="#e3e3e3"
-            android:dividerHeight="1dp"
-            android:drawablePadding="3dp"
-            android:indicatorRight="?android:attr/expandableListPreferredItemIndicatorLeft" />
-
-    </LinearLayout>
 
 </LinearLayout>

@@ -21,14 +21,14 @@
             android:layout_width="65dp"
             android:layout_height="61dp"
             android:layout_gravity="center"
-            android:src="@drawable/info_drawable" />
+            android:src="@drawable/ic_check_circle_black_24dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:text="Gleich geht's los!"
+            android:text="@string/getStarted"
             android:textColor="@color/soColor"
             android:textSize="18sp" />
 
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Erforderliche Berechtigung"
+            android:text="@string/neededPermission"
             android:textColor="@color/soColor"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:text="Standort - GPS"
+                android:text="@string/locationGPS"
                 android:textColor="@color/soColor"
                 android:textSize="16sp"
                 android:textStyle="bold" />

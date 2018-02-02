@@ -4,9 +4,6 @@ import android.util.Log;
 
 import java.util.HashMap;
 
-/**
- * Created by Dini on 17.01.2018.
- */
 
 public class CampusItems {
 

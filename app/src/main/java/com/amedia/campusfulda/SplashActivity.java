@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Dini on 18.01.2018.
  *
  * SplashActivity zeigt das Logo der App an und holt
  * beim ersten Start der App die Daten vom Server,
@@ -91,7 +90,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... arg0) {
             try {
-                json = Jsoup.connect("http://91.205.173.172/t3_project/fileadmin/myphp/campusDetails.php")
+                json = Jsoup.connect("http://www.studentsoffice.de/fileadmin/myphp/campusDetails.php")
                         .timeout(1000000)
                         .header("Accept", "text/javascript")
                         .userAgent("Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0")
