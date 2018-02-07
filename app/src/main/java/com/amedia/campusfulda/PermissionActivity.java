@@ -17,6 +17,14 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+
+/*
+*   Ist für den Berechtigungsscreen zuständig und regelt die Logik
+*
+*
+*
+* */
+
 public class PermissionActivity extends AppCompatActivity {
 
     private Button continue_button;
@@ -38,7 +46,8 @@ public class PermissionActivity extends AppCompatActivity {
             }
         });
 
-
+        //Abfrage für den Fall wenn die Berechtigung noch nicht erteilt wurde
+        //Im If-Teil wird nichts abgefragt, da das Fenster erst nach dem Weiter-Klick erscheinen soll
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             //DEBUG
@@ -56,12 +65,19 @@ public class PermissionActivity extends AppCompatActivity {
 
     }
 
-
+    //Zeigt das Berechtigungsfenster an
     private void askForPermission(){
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
     }
 
+
+    /*
+    * OnPermissionResult ist die Callback Methode für requestPermission und
+    * ist für den Fall zuständig, wenn der Nutzer eine Eingabe im Berechtigungsfenster getätigt hat
+    *
+    *
+    * */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {

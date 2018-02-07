@@ -19,6 +19,19 @@ import com.amedia.campusfulda.fragments.QuicklinksFragment;
 import com.amedia.campusfulda.fragments.NavFragment;
 import com.amedia.campusfulda.fragments.InfoFragment;
 
+/*
+* MainActivity der Applikation und ist für grundlegende Dinge zuständig, wie
+*
+* - Titel der ActionBar setzten
+* - ShiftMode der BottomBar ausschalten
+* - Standard-Fragment aufrufen
+* - Klicks auf die einzelnen Menüpunkte
+* - Klick auf Zurück-Button
+*
+*
+*
+* */
+
 public class MainActivity extends AppCompatActivity implements CategoryFragment.OnFragmentInteractionListener,
                                                                 NavFragment.OnFragmentInteractionListener,
                                                                 InfoFragment.OnFragmentInteractionListener,

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.amedia.campusfulda.R;
 
 /**
- * Created by Dini on 15.01.2018.
+ * Zeigt die Elemente des Info-Fragments an
  */
 
 public class InfoFragment extends Fragment {

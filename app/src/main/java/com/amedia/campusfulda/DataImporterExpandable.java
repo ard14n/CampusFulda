@@ -1,15 +1,17 @@
 package com.amedia.campusfulda;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 
+/*
+*   DataImporterExpandable ist dafür zuständig, die Elemente und Kategorien
+*   zu erstellen und zuzuordnen und dann als HashMap zurückzugeben
+*
+*
+* */
 
 public class DataImporterExpandable {
 
@@ -22,9 +24,11 @@ public class DataImporterExpandable {
 
     public static HashMap<String, List<String>> getData(List<CampusItems> campuslist) {
 
+        //ExpandableListDetail beinhaltet alle Elemente als ArrayLists, welche den Kategorien entsprechen
+        //Jene Kategorien enthalten alle Elemente des CampusPlans
         LinkedHashMap<String, List<String>> expandableListDetail = new LinkedHashMap<String, List<String>>();
 
-
+        //StringList für die Elemente der einzelnen Kategorien
         List<String> gebauede = new ArrayList<String>();
         List<String> wasserspender = new ArrayList<String>();
         List<String> snacks = new ArrayList<String>();
@@ -35,6 +39,8 @@ public class DataImporterExpandable {
         List<String> fahrradstaender = new ArrayList<String>();
         List<String> freizeit = new ArrayList<String>();
 
+
+        //Die Kategorien und Elemente werden der HashMap hinzugefügt
         expandableListDetail.put("Gebäude", gebauede);
         expandableListDetail.put("Wasserspender", wasserspender);
         expandableListDetail.put("Parkplätze", parkplaetze);
@@ -45,7 +51,7 @@ public class DataImporterExpandable {
         expandableListDetail.put("Bushaltestellen", bushaltestellen);
         expandableListDetail.put("Freizeit", freizeit);
 
-
+        //Alle Elemente werden den zugehörigen StringLists hinzugefügt
         for (ListIterator<CampusItems> iter = campuslist.listIterator(); iter.hasNext(); ) {
             CampusItems c = iter.next();
 
@@ -60,7 +66,8 @@ public class DataImporterExpandable {
             int s_fahrrad = (int) statematrix.get("fahrrad");
             int s_freizeit = (int) statematrix.get("freizeit");
 
-
+            //Die einzelnen Elemente werden den Kategorien zugewiesen
+            //Die Statematrix hilft hierbei
             if(s_gebaeude == 1){
 
                 gebauede.add(c.getName()+"\n "+c.getInfo());

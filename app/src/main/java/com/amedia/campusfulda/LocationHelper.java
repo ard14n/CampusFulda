@@ -16,7 +16,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
-
+/*
+* LocationHelper Klasse kann überprüfen ob GPS an oder aus ist
+* und kann den GPS einschalten Dialog hervorbringen
+*
+*
+* */
 
 public class LocationHelper implements LocationListener {
 

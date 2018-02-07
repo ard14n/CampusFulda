@@ -1,7 +1,10 @@
 package com.amedia.campusfulda;
 
 /**
- * Created by Dini on 15.01.2018.
+ *  ExpandableListAdapter ordnet die Elemente und Kategorien der List zu
+ *  und übernimmt die Logik für Klicks auf die Kategorien oder Elemente der Kategorien
+ *
+ *
  */
 
 
@@ -43,6 +46,8 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         return expandedListPosition;
     }
 
+
+    //ChildView wird erstellt
     @Override
     public View getChildView(int listPosition, final int expandedListPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
@@ -55,12 +60,13 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         String infotext = "";
+        //Holt alles bis NewLine -> "\n"
         String regex = ".*$";
 
-        // Create a Pattern object
+        // Regex Objekt wird erstellt
         Pattern r = Pattern.compile(regex);
 
-        // Now create matcher object.
+        // Matcher Objekt wird erstellt
         Matcher m = r.matcher(expandedListText);
         if (m.find()) {
             //System.out.println("Found value: " + m.group(0));
@@ -72,11 +78,15 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
         //Log.d("DEBUG REGEX", expandedListText.replaceAll(regex, ""));
 
-
+        //Titel und Beschreibung der ChildElemente innerhalb der ExpandableListView werden geholt
         TextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
         TextView expandedListTextViewDescription = convertView.findViewById(R.id.expandedListItemDescription);
+
+        //Und hier werden sie gesetzt
         expandedListTextViewDescription.setText(infotext.trim());
         expandedListTextView.setText(expandedListText.replaceAll(regex, "").trim());
+
+
         return convertView;
     }
 
@@ -115,7 +125,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         listTitleTextView.setTypeface(null, Typeface.NORMAL);
         listTitleTextView.setText(listTitle);
 
-
+        //Setzt die Icons dynamisch für jede Kategorie
         switch(listTitle){
 
             case "Gebäude":

@@ -1,9 +1,14 @@
 package com.amedia.campusfulda;
 
-import android.util.Log;
-
 import java.util.HashMap;
 
+/*
+*   CampusElemente repräsentiert ein Datensatz in der Datenbank als Objekt
+*   Enthält getter und setter Methoden
+*
+*
+*
+* */
 
 public class CampusItems {
 

@@ -42,10 +42,7 @@ public class NavFragment extends Fragment implements OnMapReadyCallback {
     private boolean isGpsEnabled;
     private LocationHelper locationHelper;
     private List<CampusItems> campuslist;
-    LocationManager lm;
-    Location location;
-    double longitude;
-    double latitude;
+
 
     public NavFragment() {
 
@@ -74,31 +71,6 @@ public class NavFragment extends Fragment implements OnMapReadyCallback {
         mapView.getMapAsync(this);
 
 
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            //Toast.makeText(getContext(), "Überprüfe bitte die Berechtigungen deiner App", Toast.LENGTH_SHORT).show();
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
-
-        } else {
-
-            if (isGpsEnabled) {
-
-                lm = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-
-                //DEBUG
-                //Toast.makeText(getContext(), "Okay dein GPS ist wohl an", Toast.LENGTH_SHORT).show();
-
-                location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                        5000,
-                        10, locationListenerGPS);
-
-            }
-
-
-        }
-
         return view;
 
     }
@@ -108,37 +80,7 @@ public class NavFragment extends Fragment implements OnMapReadyCallback {
         void onFragmentInteraction(Uri uri);
     }
 
-    LocationListener locationListenerGPS = new LocationListener() {
-        @Override
-        public void onLocationChanged(android.location.Location location) {
-            double latitude = location.getLatitude();
-            double longitude = location.getLongitude();
-            //String msg = "New Latitude: " + latitude + "New Longitude: " + longitude;
-            //Toast.makeText(getContext(),msg,Toast.LENGTH_LONG).show();
 
-            // float result[] = {0};
-            // android.location.Location.distanceBetween(location.getLatitude(), location.getLongitude(), clat, clong, result);
-
-
-            //distance.setText(String.valueOf(result[0]));
-
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-    };
 
     @Override
     public void onResume() {

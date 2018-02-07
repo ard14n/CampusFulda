@@ -8,6 +8,15 @@ import android.util.Log;
 
 import java.lang.reflect.Field;
 
+
+/*
+*
+* Diese Klasse ist dafür zuständig den ShiftMode in
+* der Bottom Navigation Bar auszuschalten
+*
+*
+* */
+
 public class BottomNavigationViewHelper {
 
 
@@ -27,9 +36,9 @@ public class BottomNavigationViewHelper {
                 item.setChecked(item.getItemData().isChecked());
             }
         } catch (NoSuchFieldException e) {
-            Log.e("BNVHelper", "Unable to get shift mode field", e);
+            Log.e("BNVHelper", "Konnte auf Shift Mode Feld nicht zugreifen", e);
         } catch (IllegalAccessException e) {
-            Log.e("BNVHelper", "Unable to change value of shift mode", e);
+            Log.e("BNVHelper", "Konnte Wert des Shift Mode Feldes nicht ändern", e);
         }
     }
 

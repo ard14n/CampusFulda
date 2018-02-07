@@ -11,9 +11,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/*
+*   Diese Klasse ist eine Helfer Klasse für den Zugriff
+*   und die Erstellung der Datenbank
+*
+*   Singleton-Objekt
+*
+*
+*
+* */
+
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
+
+    //Version und Columns der Datenbank
     private static final int DB_VERSION = 2;
     private static final String DB_NAME = "so_systems.db";
     private static final String DB_TABLE = "campus";
@@ -35,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COL_FREIZEIT= "c_is_freizeitmoeglichkeit";
     private static final String COL_TAGS = "c_tags";
 
-
+    //CREATE TABLE STATEMENT
     private static final String CREATE_SO_TABLE = "CREATE TABLE "+ DB_TABLE +"("+
             COL_ID	+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
             COL_NAME + " TEXT, "+
@@ -59,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private SQLiteDatabase myDataBase;
     private static DatabaseHelper instance;
 
-
+    //Methode ruft privaten Konstruktor auf und erstellt Objekt nur einmal
     public static DatabaseHelper createInstance(Context context, String dbname, int dbversion){
 
         if(instance == null){
@@ -72,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
-
+    //Privater Konstruktor, da Singleton
     private DatabaseHelper(Context context, String name, int version) {
         super(context, DB_NAME, null, DB_VERSION);
     }
